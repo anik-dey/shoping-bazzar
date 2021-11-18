@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//landing page
+
+Route::get('/shoping-bazzar', [App\Http\Controllers\BaseController::class,'index']);
