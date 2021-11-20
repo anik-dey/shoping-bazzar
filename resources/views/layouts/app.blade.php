@@ -3,7 +3,11 @@
 
 <head>
     @include('components.frontend.css')
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Women &ndash; Belle Multipurpose Bootstrap 4 Template</title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body id="bg">
@@ -19,6 +23,7 @@
         <!-- Content -->
         @yield('content')
         <!-- Content END-->
+
         <!-- Footer -->
         @include('components.frontend.footer')
         <!-- Footer END-->
