@@ -24,3 +24,6 @@ Route::get('/shoping-bazzar', [App\Http\Controllers\BaseController::class,'index
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Admin Category
+Route::any('category/create', [App\Http\Controllers\Admin\CategoryController::class, 'createCategory'])->name('createCategory');
