@@ -20,3 +20,7 @@ Route::get('/', function () {
 //landing page
 
 Route::get('/shoping-bazzar', [App\Http\Controllers\BaseController::class,'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('user_layout.app')
 @section('title')
     Oxdora I Tech | Home
 @endsection
