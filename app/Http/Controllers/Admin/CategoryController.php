@@ -33,4 +33,22 @@ class CategoryController extends Controller
         }
 
     }
+
+    public function showCategory()
+    {
+       // $categories = Category::where('parent_id', null)->orderby('name', 'asc')->get();
+       $categories= Category::orderby('name', 'asc')->get();
+        return view('admin.show-category',compact('categories'));
+    }
+
+    public function editCategory( Request $request, $id)
+    {
+        $categories=Category::find($id);
+       return view('admin.edit-category',compact('categories'));
+    }
+
+    public function deleteCategory($id)
+    {
+
+    }
 }
