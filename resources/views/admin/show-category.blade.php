@@ -56,11 +56,16 @@
                                 @endif
                             </td>
                             <td>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</td>
-                            <td><a href="{{ URL::to('/category-delete/' . $item->id) }}" <button type="button"
-                                    class="btn btn-block btn-danger btn-sm">Delete</button>
+                            <td>
+
+                                <a href="{{ URL::to('/category-edit/' . $item->id) }}" <button type="button"><i
+                                        class="fa fa-edit"></i></button>
                                 </a>
-                                <a href="{{ URL::to('/category-edit/' . $item->id) }}" <button type="button"
-                                    class="btn btn-block btn-primary btn-sm">Edit</button> </a>
+                                <i>||||</i>
+                                <a href="{{ URL::to('/category-delete/' . $item->id) }}" <button type="button"><i
+                                        class="fa fa-trash"></i></button>
+                                </a>
+
                             </td>
 
                         </tr>

@@ -28,5 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Admin Category
 Route::any('category/create', [App\Http\Controllers\Admin\CategoryController::class, 'createCategory'])->name('createCategory');
 Route::get('/caregory-show', [App\Http\Controllers\Admin\CategoryController::class, 'showCategory'])->name('showCategory');
-Route::get('/category-edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'editCategory']);
+Route::any('category-edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'editCategory'])->name('editCategory');
 Route::get('/category-delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'deleteCategory'])->name('deleteCategory');

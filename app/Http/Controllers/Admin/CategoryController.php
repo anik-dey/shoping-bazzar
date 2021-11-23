@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -41,14 +42,64 @@ class CategoryController extends Controller
         return view('admin.show-category',compact('categories'));
     }
 
-    public function editCategory( Request $request, $id)
+    public function editCategory( $id, Request $request)
     {
-        $categories=Category::find($id);
-       return view('admin.edit-category',compact('categories'));
+        $category = Category::findOrFail($id);
+        if($request->method()=='GET')
+        {
+            $categories = Category::where('parent_id', null)->where('id', '!=', $category->id)->orderby('name', 'asc')->get();
+            return view('admin.edit-category', compact('category', 'categories'));
+        }
+
+        if($request->method()=='POST')
+        {
+            $validator = $request->validate([
+                'name'     => 'required',
+                'slug' => ['required', Rule::unique('categories')->ignore($category->id)],
+                'parent_id'=> 'nullable|numeric'
+            ]);
+            if($request->name != $category->name || $request->parent_id != $category->parent_id)
+            {
+                if(isset($request->parent_id))
+                {
+                    $checkDuplicate = Category::where('name', $request->name)->where('parent_id', $request->parent_id)->first();
+                    if($checkDuplicate)
+                    {
+                        return redirect()->back()->with('error', 'Category already exist in this parent.');
+                    }
+                }
+                else
+                {
+                    $checkDuplicate = Category::where('name', $request->name)->where('parent_id', null)->first();
+                    if($checkDuplicate)
+                    {
+                        return redirect()->back()->with('error', 'Category already exist with this name.');
+                    }
+                }
+            }
+
+            $category->name = $request->name;
+            $category->parent_id = $request->parent_id;
+            $category->slug = $request->slug;
+            $category->save();
+            return redirect()->back()->with('success', 'Category has been updated successfully.');
+        }
     }
 
     public function deleteCategory($id)
     {
-
+        $category = Category::findOrFail($id);
+        if(count($category->subcategory))
+        {
+            $subcategories = $category->subcategory;
+            foreach($subcategories as $cat)
+            {
+                $cat = Category::findOrFail($cat->id);
+                $cat->parent_id = null;
+                $cat->save();
+            }
+        }
+        $category->delete();
+        return redirect()->back();
     }
 }
