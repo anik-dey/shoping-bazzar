@@ -30,3 +30,6 @@ Route::any('category/create', [App\Http\Controllers\Admin\CategoryController::cl
 Route::get('/caregory-show', [App\Http\Controllers\Admin\CategoryController::class, 'showCategory'])->name('showCategory');
 Route::any('category-edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'editCategory'])->name('editCategory');
 Route::get('/category-delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'deleteCategory'])->name('deleteCategory');
+
+//Admin Product
+Route::any('product/create', [App\Http\Controllers\Admin\ProductController::class, 'createProduct'])->name('createProduct');
