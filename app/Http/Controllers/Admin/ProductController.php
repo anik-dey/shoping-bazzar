@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Image;
 
 class ProductController extends Controller
@@ -35,29 +36,55 @@ class ProductController extends Controller
             ]);
             $randomNumber = random_int(100000, 999999);
 
-            $product_image = $request->file('product_image');
-            $input['product_image'] = time().'.'.$product_image->extension();
-            $destinationPath = public_path('/products');
-            $img = Image::make($product_image->path());
-            $img->resize(1072, 1500, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($destinationPath.'/'.$input['product_image']);
-            $destinationPath = public_path('/products');
-            $image->move($destinationPath, $input['product_image']);
+           $image= $request->product_image;
+           $filename=$image->getClientOriginalName();
+           $image_resize= Image::make($image->getRealPath());
+           $image_resize->resize(1070,1500);
+           $image_resize->save(public_path('products/'.$filename));
+           //$request->product_image->store('products', 'public');
+           $data= array();
+        //    $data['product_id']= 1;
+           $data['product_name']= $request->product_name;
+           $data['product_code']= $randomNumber;
+           $data['product_des']= $request->product_des;
+           $data['product_quantity']= $request->product_quantity;
+           $data['product_price']= $request->product_price;
+           $data['product_image']=$filename;
+        //    $data['product_image']=$image_resize;
+           $data['product_status']= $request->option;
+           $data['category_id']= $request->category_id;
+           $data['created_at']=Carbon::now();
+           $data['updated_at']=Carbon::now();
+           DB::connection()->enableQueryLog();
+           //dd($data);
+           DB::table('products')->insert($data);
 
-            $product = new Product();
-            $product->name = $request->product_name;
-            $product->code =  $randomNumber;
-            $product->des = $request->product_des;
-            $product->quality = $request->product_quality;
-            $product->price = $request->product_price;
-            $product->image = "/public/products/" . $input['product_image'];
-            $product->status = $request->option;
-            $product->category_id = $request->category_id;
-            $product->created_at = Carbon::now();
-            $product->updated_at = Carbon::now();
 
-            $product->save();
+
+        //    Product::create([
+        //     'product_name' => $request->product_name,
+        //     'product_code'  =>  $randomNumber,
+        //     'product_des'  => $request->product_des,
+        //     'product_quality'  => $request->product_quality,
+        //     'product_price'  => $request->product_price,
+        //     'product_image'  => $image_resize,
+        //     'product_status'  => $request->option,
+        //     'category_id'  => $request->category_id
+        // ]);
+        //     $product = new Product();
+        //     $product->product_name = $request->product_name;
+        //     $product->product_code =  $randomNumber;
+        //     $product->product_des = $request->product_des;
+        //     $product->product_quality = $request->product_quality;
+        //     $product->product_price = $request->product_price;
+        //     $product->product_image = $image_resize;
+        //     $product->product_status = $request->option;
+        //     $product->category_id = $request->category_id;
+        //     $product->created_at = Carbon::now();
+        //     $product->updated_at = Carbon::now();
+        //    dd($product);
+        //     $product->save();
+
             return redirect()->back()->with('success', 'Product has been created successfully.');
         }
 
