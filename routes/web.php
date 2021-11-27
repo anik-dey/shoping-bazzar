@@ -33,3 +33,5 @@ Route::get('/category-delete/{id}', [App\Http\Controllers\Admin\CategoryControll
 
 //Admin Product
 Route::any('product/create', [App\Http\Controllers\Admin\ProductController::class, 'createProduct'])->name('createProduct');
+Route::get('/product-show', [App\Http\Controllers\Admin\ProductController::class, 'showProduct'])->name('showProduct');
+Route::get('/product-status/{status}', [App\Http\Controllers\Admin\ProductController::class, 'statusProduct'])->name('statusProduct');
