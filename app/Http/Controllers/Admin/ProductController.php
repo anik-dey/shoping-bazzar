@@ -60,4 +60,32 @@ class ProductController extends Controller
         }
 
     }
+
+    public function showProduct()
+    {
+        $products=Product::orderby('product_name','asc')->get();
+        return view('admin.show-product',compact('products'));
+    }
+
+    public function statusProduct($status)
+    {
+
+        $data= array();
+        $product = DB::table('products')->where('product_id', $status)->value('product_status');
+        if($product == 'Inactive') {
+
+            $data['product_status']="Active";
+            DB::table('products')->update($data);
+            return redirect('product-show');
+        }
+        else if($product == 'Active'){
+
+            $data['product_status']="Inactive";
+            DB::table('products')->update($data);
+            return redirect('product-show');
+        }
+
+
+
+    }
 }

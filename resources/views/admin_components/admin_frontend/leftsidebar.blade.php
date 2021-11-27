@@ -57,13 +57,19 @@
                          <li class="nav-item">
                              <a href="{{ route('showCategory') }}" class="nav-link active">
                                  <i class="far fa-circle nav-icon"></i>
-                                 <p>Show Category</p>
+                                 <p>Category List</p>
                              </a>
                          </li>
                          <li class="nav-item">
                              <a href="{{ route('createProduct') }}" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Create Product</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="{{ route('showProduct') }}" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Product List</p>
                              </a>
                          </li>
                      </ul>
