@@ -69,7 +69,12 @@
                                 </td>
                                 <td>{{ $item->category->name }}</td>
                                 <td><a href="{{ URL::to('/product-edit/' . $item->product_id) }}" <button type="button"><i
-                                            class="fa fa-edit"></i></button></td>
+                                            class="fa fa-edit"></i></button>
+                                        <i>||||</i>
+                                        <a href="{{ URL::to('/product-delete/' . $item->product_id) }}" <button
+                                            type="button"><i class="fa fa-trash"></i></button>
+                                        </a></td>
+
                             </tr>
                         @endforeach
                     @endif

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
@@ -100,6 +101,7 @@ class CategoryController extends Controller
             }
         }
         $category->delete();
+        Product::where('category_id',$id)->delete();
         return redirect()->back();
     }
 }
