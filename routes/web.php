@@ -37,3 +37,4 @@ Route::get('/product-show', [App\Http\Controllers\Admin\ProductController::class
 Route::get('/product-status/{status}', [App\Http\Controllers\Admin\ProductController::class, 'statusProduct'])->name('statusProduct');
 Route::get('/product-edit/{id}', [App\Http\Controllers\Admin\ProductController::class, 'editProduct'])->name('editProduct');
 Route::post('/product-update/{id}', [App\Http\Controllers\Admin\ProductController::class, 'updateProduct'])->name('updateProduct');
+Route::get('/product-delete/{id}', [App\Http\Controllers\Admin\ProductController::class, 'deleteProduct'])->name('deleteProduct');

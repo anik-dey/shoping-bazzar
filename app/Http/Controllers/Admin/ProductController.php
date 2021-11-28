@@ -53,7 +53,7 @@ class ProductController extends Controller
            $data['category_id']= $request->category_id;
            $data['created_at']=Carbon::now();
            $data['updated_at']=Carbon::now();
-           DB::connection()->enableQueryLog();
+        //    DB::connection()->enableQueryLog();
            DB::table('products')->insert($data);
 
             return redirect()->back()->with('success', 'Product has been created successfully.');
@@ -143,5 +143,11 @@ class ProductController extends Controller
             return redirect()->back()->with('success', 'Product has been updated successfully.');
         }
 
+    }
+
+    public function deleteProduct($id)
+    {
+        DB::table('products')->where('product_id', $id)->delete();
+        return redirect()->back();
     }
 }
