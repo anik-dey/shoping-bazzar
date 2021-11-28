@@ -75,17 +75,73 @@ class ProductController extends Controller
         if($product == 'Inactive') {
 
             $data['product_status']="Active";
-            DB::table('products')->update($data);
+            DB::table('products') ->where('product_id', $status)->update($data);
             return redirect('product-show');
         }
         else if($product == 'Active'){
 
             $data['product_status']="Inactive";
-            DB::table('products')->update($data);
+            DB::table('products') ->where('product_id', $status)->update($data);
             return redirect('product-show');
         }
+    }
 
+    public function editProduct($id)
+    {
+        $products = DB::table('products')->where('product_id', $id)->first();
+        $categories=Category::get();
+        $category = DB::table('categories')
+            ->join('products', 'categories.id', '=', 'products.category_id')
+            ->select('categories.name')
+            ->first();
+        return view('admin.edit-product',compact('products','category','categories'));
+    }
 
+    public function updateProduct(Request $request, $id)
+    {
+        $validator = $request->validate([
+            'product_name'      => 'required',
+            'product_des'       => 'required',
+            'product_quantity'  => 'required',
+            'category_id'       => 'required',
+            'product_price'     => 'required|numeric',
+            // 'product_image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+        ]);
+
+        if($request->product_image != '')
+        {
+            $validator = $request->validate([
+                'product_image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ]);
+            $image= $request->product_image;
+            $extension=$image->getClientOriginalName();
+            $filename=time().'.'.$extension;
+            $image_resize= Image::make($image->getRealPath());
+            $image_resize->resize(1070,1500);
+            $image_resize->save(public_path('products/'.$filename));
+            $data= array();
+            $data['product_name']= $request->product_name;
+            $data['product_des']= $request->product_des;
+            $data['product_quantity']= $request->product_quantity;
+            $data['product_price']= $request->product_price;
+            $data['product_image']=$filename;
+            $data['category_id']= $request->category_id;
+            $data['updated_at']=Carbon::now();
+            DB::table('products')->where('product_id', $id)->update($data);
+            return redirect()->back()->with('success', 'Product has been updated successfully.');
+        }
+        else{
+            $data= array();
+            $data['product_name']= $request->product_name;
+            $data['product_des']= $request->product_des;
+            $data['product_quantity']= $request->product_quantity;
+            $data['product_price']= $request->product_price;
+            $data['category_id']= $request->category_id;
+            $data['updated_at']=Carbon::now();
+            DB::table('products')->where('product_id', $id)->update($data);
+            return redirect()->back()->with('success', 'Product has been updated successfully.');
+        }
 
     }
 }
