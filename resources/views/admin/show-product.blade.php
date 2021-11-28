@@ -68,7 +68,8 @@
                                         href="{{ URL::to('/product-status/' . $item->product_id) }}">{{ $item->product_status }}</a>
                                 </td>
                                 <td>{{ $item->category->name }}</td>
-                                <td><a href="" <button type="button"><i class="fa fa-edit"></i></button></td>
+                                <td><a href="{{ URL::to('/product-edit/' . $item->product_id) }}" <button type="button"><i
+                                            class="fa fa-edit"></i></button></td>
                             </tr>
                         @endforeach
                     @endif
