@@ -153,6 +153,9 @@
                                                         <a href="#">{{ $item->product_name }}</a>
                                                     </div>
                                                     <!-- End product name -->
+                                                    <div class="product-price">
+                                                        <span class="price">{{ $item->product_quantity }}</span>
+                                                    </div>
                                                     <!-- product price -->
                                                     <div class="product-price">
                                                         <span class="old-price">$500.00</span>
