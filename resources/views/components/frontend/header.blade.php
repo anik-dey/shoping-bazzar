@@ -471,7 +471,7 @@
 </div>
 <!--End Header-->
 <!--Mobile Menu-->
-<div class="mobile-nav-wrapper" role="navigation">
+{{-- <div class="mobile-nav-wrapper" role="navigation">
     <div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Close Menu</div>
     <ul id="MobileNav" class="mobile-nav">
         <li class="lvl1 parent megamenu"><a href="index.html">Home <i class="anm anm-plus-l"></i></a>
@@ -664,5 +664,5 @@
         <li class="lvl1"><a href="#"><b>Buy Now!</b></a>
         </li>
     </ul>
-</div>
+</div> --}}
 <!--End Mobile Menu-->
