@@ -418,7 +418,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="item">
+                            {{-- <li class="item">
                                 <a class="product-image" href="#">
                                     <img src="{{ asset('frontend/assets/images/product-images/cape-dress-2.jpg') }}"
                                         alt="Elastic Waist Dress - Black / Small" title="" />
@@ -447,7 +447,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="total">
                             <div class="total-in">
