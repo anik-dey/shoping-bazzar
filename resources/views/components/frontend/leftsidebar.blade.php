@@ -20,37 +20,41 @@
                     <div class="widget-title">
                         <h2>Categories</h2>
                     </div>
+                    <?php
+                    $categories = DB::table('categories')
+                        ->select('*')
+                        ->orderBy('name', 'asc')
+                        ->get();
+                    ?>
                     <div class="widget-content">
                         <ul class="sidebar_categories">
-                            <li class="level1 sub-level"><a href="#;" class="site-nav">Clothing</a>
-                                <ul class="sublinks">
-                                    <li class="level2"><a href="#;" class="site-nav">Men</a>
-                                    </li>
-                                    <li class="level2"><a href="#;" class="site-nav">Women</a>
-                                    </li>
-                                    <li class="level2"><a href="#;" class="site-nav">Child</a>
-                                    </li>
-                                    <li class="level2"><a href="#;" class="site-nav">View
-                                            All Clothing</a></li>
-                                </ul>
-                            </li>
-                            <li class="level1 sub-level"><a href="#;" class="site-nav">Jewellery</a>
-                                <ul class="sublinks">
-                                    <li class="level2"><a href="#;" class="site-nav">Ring</a>
-                                    </li>
-                                    <li class="level2"><a href="#;" class="site-nav">Neckalses</a></li>
-                                    <li class="level2"><a href="#;" class="site-nav">Eaarings</a></li>
-                                    <li class="level2"><a href="#;" class="site-nav">View
-                                            All Jewellery</a></li>
-                                </ul>
-                            </li>
-                            <li class="lvl-1"><a href="#;" class="site-nav">Shoes</a></li>
-                            <li class="lvl-1"><a href="#;" class="site-nav">Accessories</a>
-                            </li>
-                            <li class="lvl-1"><a href="#;" class="site-nav">Collections</a>
-                            </li>
-                            <li class="lvl-1"><a href="#;" class="site-nav">Sale</a></li>
-                            <li class="lvl-1"><a href="#;" class="site-nav">Page</a></li>
+                            @if ($categories != null)
+                                @foreach ($categories as $item)
+                                    @if ($item->parent_id == null)
+                                        <li class="level1 sub-level"><a href="#;"
+                                                class="site-nav">{{ $item->name }}</a>
+
+                                            <?php $sub = DB::table('categories')
+                                                ->select('*')
+                                                ->where('parent_id', '=', $item->id)
+                                                ->orderBy('name', 'asc')
+                                                ->get();
+                                            ?>
+                                            @if ($sub != null)
+                                                <ul class="sublinks">
+                                                    @foreach ($sub as $item)
+
+                                                        <li class="level2"><a href="#;"
+                                                                class="site-nav">{{ $item->name }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </li>
+                                    @endif
+                                @endforeach
+                            @endif
+
                         </ul>
                     </div>
                 </div>
