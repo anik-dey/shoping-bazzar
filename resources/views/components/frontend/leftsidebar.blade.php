@@ -44,7 +44,8 @@
                                                 <ul class="sublinks">
                                                     @foreach ($sub as $item)
 
-                                                        <li class="level2"><a href="#;"
+                                                        <li class="level2"><a
+                                                                href="{{ URL::to('/product-lists/' . $item->id) }}"
                                                                 class="site-nav">{{ $item->name }}</a>
                                                         </li>
                                                     @endforeach
@@ -81,82 +82,6 @@
                         </div>
                     </form>
                 </div>
-                <!--End Price Filter-->
-                <!--Size Swatches-->
-                <div class="sidebar_widget filterBox filter-widget size-swacthes">
-                    <div class="widget-title">
-                        <h2>Size</h2>
-                    </div>
-                    <div class="filter-color swacth-list">
-                        <ul>
-                            <li><span class="swacth-btn checked">X</span></li>
-                            <li><span class="swacth-btn">XL</span></li>
-                            <li><span class="swacth-btn">XLL</span></li>
-                            <li><span class="swacth-btn">M</span></li>
-                            <li><span class="swacth-btn">L</span></li>
-                            <li><span class="swacth-btn">S</span></li>
-                            <li><span class="swacth-btn">XXXL</span></li>
-                            <li><span class="swacth-btn">XXL</span></li>
-                            <li><span class="swacth-btn">XS</span></span></li>
-                        </ul>
-                    </div>
-                </div>
-                <!--End Size Swatches-->
-                <!--Color Swatches-->
-                <div class="sidebar_widget filterBox filter-widget">
-                    <div class="widget-title">
-                        <h2>Color</h2>
-                    </div>
-                    <div class="filter-color swacth-list clearfix">
-                        <span class="swacth-btn black"></span>
-                        <span class="swacth-btn white checked"></span>
-                        <span class="swacth-btn red"></span>
-                        <span class="swacth-btn blue"></span>
-                        <span class="swacth-btn pink"></span>
-                        <span class="swacth-btn gray"></span>
-                        <span class="swacth-btn green"></span>
-                        <span class="swacth-btn orange"></span>
-                        <span class="swacth-btn yellow"></span>
-                        <span class="swacth-btn blueviolet"></span>
-                        <span class="swacth-btn brown"></span>
-                        <span class="swacth-btn darkGoldenRod"></span>
-                        <span class="swacth-btn darkGreen"></span>
-                        <span class="swacth-btn darkRed"></span>
-                        <span class="swacth-btn dimGrey"></span>
-                        <span class="swacth-btn khaki"></span>
-                    </div>
-                </div>
-                <!--End Color Swatches-->
-                <!--Brand-->
-                <div class="sidebar_widget filterBox filter-widget">
-                    <div class="widget-title">
-                        <h2>Brands</h2>
-                    </div>
-                    <ul>
-                        <li>
-                            <input type="checkbox" value="allen-vela" id="check1">
-                            <label for="check1"><span><span></span></span>Allen Vela</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" value="oxymat" id="check3">
-                            <label for="check3"><span><span></span></span>Oxymat</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" value="vanelas" id="check4">
-                            <label for="check4"><span><span></span></span>Vanelas</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" value="pagini" id="check5">
-                            <label for="check5"><span><span></span></span>Pagini</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" value="monark" id="check6">
-                            <label for="check6"><span><span></span></span>Monark</label>
-                        </li>
-                    </ul>
-                </div>
-                <!--End Brand-->
-                <!--Popular Products-->
                 <div class="sidebar_widget">
                     <div class="widget-title">
                         <h2>Popular Products</h2>
@@ -226,70 +151,6 @@
                         </div>
                     </div>
                 </div>
-                <!--End Popular Products-->
-                <!--Banner-->
-                <div class="sidebar_widget static-banner">
-                    <img src="{{ asset('frontend/assets/images/side-banner-2.jpg') }}" alt="" />
-                </div>
-                <!--Banner-->
-                <!--Information-->
-                <div class="sidebar_widget">
-                    <div class="widget-title">
-                        <h2>Information</h2>
-                    </div>
-                    <div class="widget-content">
-                        <p>Use this text to share information about your brand with your customers. Describe
-                            a product, share announcements, or welcome customers to your store.</p>
-                    </div>
-                </div>
-                <!--end Information-->
-                <!--Product Tags-->
-                <div class="sidebar_widget">
-                    <div class="widget-title">
-                        <h2>Product Tags</h2>
-                    </div>
-                    <div class="widget-content">
-                        <ul class="product-tags">
-                            <li><a href="#" title="Show products matching tag $100 - $400">$100 - $400</a>
-                            </li>
-                            <li><a href="#" title="Show products matching tag $400 - $600">$400 - $600</a>
-                            </li>
-                            <li><a href="#" title="Show products matching tag $600 - $800">$600 - $800</a>
-                            </li>
-                            <li><a href="#" title="Show products matching tag Above $800">Above $800</a>
-                            </li>
-                            <li><a href="#" title="Show products matching tag Allen Vela">Allen Vela</a>
-                            </li>
-                            <li><a href="#" title="Show products matching tag Black">Black</a></li>
-                            <li><a href="#" title="Show products matching tag Blue">Blue</a></li>
-                            <li><a href="#" title="Show products matching tag Cantitate">Cantitate</a></li>
-                            <li><a href="#" title="Show products matching tag Famiza">Famiza</a></li>
-                            <li><a href="#" title="Show products matching tag Gray">Gray</a></li>
-                            <li><a href="#" title="Show products matching tag Green">Green</a></li>
-                            <li><a href="#" title="Show products matching tag Hot">Hot</a></li>
-                            <li><a href="#" title="Show products matching tag jean shop">jean shop</a></li>
-                            <li><a href="#" title="Show products matching tag jesse kamm">jesse kamm</a>
-                            </li>
-                            <li><a href="#" title="Show products matching tag L">L</a></li>
-                            <li><a href="#" title="Show products matching tag Lardini">Lardini</a></li>
-                            <li><a href="#" title="Show products matching tag lareida">lareida</a></li>
-                            <li><a href="#" title="Show products matching tag Lirisla">Lirisla</a></li>
-                            <li><a href="#" title="Show products matching tag M">M</a></li>
-                            <li><a href="#" title="Show products matching tag mini-dress">mini-dress</a>
-                            </li>
-                            <li><a href="#" title="Show products matching tag Monark">Monark</a></li>
-                            <li><a href="#" title="Show products matching tag Navy">Navy</a></li>
-                            <li><a href="#" title="Show products matching tag new">new</a></li>
-                            <li><a href="#" title="Show products matching tag new arrivals">new arrivals</a>
-                            </li>
-                            <li><a href="#" title="Show products matching tag Orange">Orange</a></li>
-                            <li><a href="#" title="Show products matching tag oxford">oxford</a></li>
-                            <li><a href="#" title="Show products matching tag Oxymat">Oxymat</a></li>
-                        </ul>
-                        <span class="btn btn--small btnview">View all</span>
-                    </div>
-                </div>
-                <!--end Product Tags-->
             </div>
         </div>
         @yield('landing-content')

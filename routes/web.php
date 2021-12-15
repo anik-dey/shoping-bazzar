@@ -38,3 +38,6 @@ Route::get('/product-status/{status}', [App\Http\Controllers\Admin\ProductContro
 Route::get('/product-edit/{id}', [App\Http\Controllers\Admin\ProductController::class, 'editProduct'])->name('editProduct');
 Route::post('/product-update/{id}', [App\Http\Controllers\Admin\ProductController::class, 'updateProduct'])->name('updateProduct');
 Route::get('/product-delete/{id}', [App\Http\Controllers\Admin\ProductController::class, 'deleteProduct'])->name('deleteProduct');
+
+//User Pannel
+Route::get('/product-lists/{id}', [App\Http\Controllers\BaseController::class, 'listProduct'])->name('listProduct');
