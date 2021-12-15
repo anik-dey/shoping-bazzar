@@ -30,16 +30,21 @@
                         <ul class="sidebar_categories">
                             @if ($categories != null)
                                 @foreach ($categories as $item)
-                                    @if ($item->parent_id == null)
-                                        <li class="level1 sub-level"><a href="#;"
-                                                class="site-nav">{{ $item->name }}</a>
+                                    <?php $sub = DB::table('categories')
+                                        ->select('*')
+                                        ->where('parent_id', '=', $item->id)
+                                        ->orderBy('name', 'asc')
+                                        ->get();
+                                    ?>
 
-                                            <?php $sub = DB::table('categories')
-                                                ->select('*')
-                                                ->where('parent_id', '=', $item->id)
-                                                ->orderBy('name', 'asc')
-                                                ->get();
-                                            ?>
+                                    @if ($item->parent_id == null)
+                                        <li class="level1 sub-level">
+                                            @if ($sub->isEmpty())
+                                                <a href="{{ URL::to('/product-lists/' . $item->id) }}"
+                                                    class="site-nav">{{ $item->name }}</a>
+                                            @else
+                                                <a href="#;" class="site-nav">{{ $item->name }}</a>
+                                            @endif
                                             @if ($sub != null)
                                                 <ul class="sublinks">
                                                     @foreach ($sub as $item)
