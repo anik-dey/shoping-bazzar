@@ -45,6 +45,7 @@ Route::get('/product-lists/{id}', [App\Http\Controllers\BaseController::class, '
 //Cart
 Route::get('cart', [App\Http\Controllers\User\CartController::class, 'cartList'])->name('cart.list');
 Route::get('/cart-store/{id}', [App\Http\Controllers\User\CartController::class, 'addToCart'])->name('cart.store');
+Route::get('/product-lists/cart-store/{id}', [App\Http\Controllers\User\CartController::class, 'addToCart'])->name('cart.storee');
 Route::post('update-cart', [App\Http\Controllers\User\CartController::class, 'updateCart'])->name('cart.update');
 Route::get('remove/{id}', [App\Http\Controllers\User\CartController::class, 'removeCart'])->name('cart.remove');
 Route::get('clear', [App\Http\Controllers\User\CartController::class, 'clearAllCart'])->name('cart.clear');

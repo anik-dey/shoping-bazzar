@@ -118,10 +118,11 @@
                                                     <!-- countdown end -->
 
                                                     <!-- Start product button -->
-                                                    <form class="variants add" action="#"
-                                                        onclick="window.location.href='cart.html'" method="post">
-                                                        <button class="btn btn-addto-cart" type="button">Select
-                                                            Options</button>
+                                                    <form class="variants add" action=""
+                                                        onclick="window.location.href='cart-store/{{ $item->product_id }}'"
+                                                        method="post" enctype="multipart/form-data">
+                                                        <button class="btn btn-addto-cart" type="button">Add To
+                                                            Cart</button>
                                                     </form>
                                                     <div class="button-set">
                                                         <a href="javascript:void(0)" title="Quick View"
