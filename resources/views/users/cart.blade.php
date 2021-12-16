@@ -441,7 +441,7 @@
                                     <div class="row border-bottom pb-2">
                                         <span class="col-12 col-sm-6 cart__subtotal-title">Subtotal</span>
                                         <span class="col-12 col-sm-6 text-right"><span
-                                                class="money">$735.00</span></span>
+                                                class="money">{{ Cart::getTotal() }}</span></span>
                                     </div>
                                     <div class="row border-bottom pb-2 pt-2">
                                         <span class="col-12 col-sm-6 cart__subtotal-title">Tax</span>
