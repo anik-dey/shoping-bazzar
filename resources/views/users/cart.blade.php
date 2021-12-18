@@ -44,6 +44,12 @@
         <!--Body Content-->
         <div id="page-content">
             <!--Page Title-->
+            <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
+                <a href="{{ URL::to('/shoping-bazzar/') }}">
+                    <img src="{{ asset('frontend/assets/images/logo.svg') }}" alt="Belle Multipurpose Html Template"
+                        title="Belle Multipurpose Html Template" />
+                </a>
+            </div>
             <div class="page section-header text-center">
                 <div class="page-title">
                     <div class="wrapper">
@@ -108,12 +114,14 @@
                                             <td class="cart__update-wrapper cart-flex-item text-right">
                                                 <div class="cart__qty text-center">
                                                     <div class="qtyField">
-                                                        <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                        <a class="qtyBtn minus"
+                                                            href="{{ URL::to('/update-cart/' . $item->quantity . '/' . $item->id . '/' . '1') }}"><i
                                                                 class="icon icon-minus"></i></a>
                                                         <input class="cart__qty-input qty update-cart" type="text"
-                                                            name="updates[]" id="qty" value={{ $item->quantity }}
-                                                            pattern="[0-9]*">
-                                                        <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                            name="quantity[]" id="qty" title="Qty"
+                                                            value={{ $item->quantity }} pattern="[0-9]*">
+                                                        <a class="qtyBtn plus"
+                                                            href="{{ URL::to('/update-cart/' . $item->quantity . '/' . $item->id . '/' . '2') }}"><i
                                                                 class="icon icon-plus"></i></a>
                                                     </div>
                                                 </div>
@@ -139,9 +147,9 @@
                                             <a href="{{ URL::to('/clear') }}" <button type="submit" name="clear"
                                                 class="btn btn-secondary btn--small  small--hide">Clear
                                                 Cart</button></a>
-                                            <button type="submit" name="update"
+                                            {{-- <button type="submit" name="update"
                                                 class="btn btn-secondary btn--small cart-continue ml-2">Update
-                                                Cart</button>
+                                                Cart</button> --}}
                                         </td>
                                     </tr>
                                 </tfoot>
@@ -505,13 +513,15 @@
 
 <!-- belle/cart-variant1.html   11 Nov 2019 12:44:32 GMT -->
 {{-- <script type="text/javascript">
-    $(".update-cart").change(function(e) {
+    // $(".update-cart").change(function(e) {
+    //     e.preventDefault();
+    $(document).on('click', 'qty', function(e) {
         e.preventDefault();
 
         var ele = $(this);
 
         $.ajax({
-            url: '{{ route('update.cart') }}',
+            url: '{{ route('cart.update') }}',
             method: "patch",
             data: {
                 _token: '{{ csrf_token() }}',
@@ -522,26 +532,6 @@
                 window.location.reload();
             }
         });
-    });
-
-    $(".remove-from-cart").click(function(e) {
-        e.preventDefault();
-
-        var ele = $(this);
-
-        if (confirm("Are you sure want to remove?")) {
-            $.ajax({
-                url: '{{ route('remove.from.cart') }}',
-                method: "DELETE",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    id: ele.parents("tr").attr("data-id")
-                },
-                success: function(response) {
-                    window.location.reload();
-                }
-            });
-        }
     });
 </script> --}}
 
