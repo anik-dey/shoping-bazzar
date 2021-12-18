@@ -32,18 +32,47 @@ class CartController extends Controller
         // return redirect()->route('cart.list');
     }
 
-    public function updateCart(Request $request)
+    public function updateCart($quantity,$id,$fun)
     {
-        \Cart::update(
-            $request->id,
-            [
-                'quantity' => [
-                    'relative' => false,
-                    'value' => $request->quantity
-                ],
-            ]
-        );
+        if($fun=="1")
+        {
+            $quanties=$quantity-1;
+            if($quanties==0)
+            {
+                $quanties=1;
+                \Cart::update(
+                    $id,
+                    [
+                        'quantity' => [
+                            'relative' => false,
+                            'value' => $quanties
+                        ],
+                    ]
+                );
+            }
+            \Cart::update(
+                $id,
+                [
+                    'quantity' => [
+                        'relative' => false,
+                        'value' => $quanties
+                    ],
+                ]
+            );
 
+        }
+        else if($fun=="2"){
+            $quanties=$quantity+1;
+            \Cart::update(
+                $id,
+                [
+                    'quantity' => [
+                        'relative' => false,
+                        'value' => $quanties
+                    ],
+                ]
+            );
+        }
         session()->flash('success', 'Item Cart is Updated Successfully !');
         return redirect()->back();
     }
