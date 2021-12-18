@@ -416,11 +416,13 @@
                                             <div class="wrapQtyBtn">
                                                 <div class="qtyField">
                                                     <span class="label">Qty:</span>
-                                                    <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                    <a class="qtyBtn minus"
+                                                        href="{{ URL::to('/update-cart/' . $item->quantity . '/' . $item->id . '/' . '1') }}"><i
                                                             class="fa anm anm-minus-r" aria-hidden="true"></i></a>
                                                     <input type="text" id="Quantity" name="quantity"
                                                         value={{ $item->quantity }} class="product-form__input qty">
-                                                    <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                    <a class="qtyBtn plus"
+                                                        href="{{ URL::to('/update-cart/' . $item->quantity . '/' . $item->id . '/' . '2') }}"><i
                                                             class="fa anm anm-plus-r" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
