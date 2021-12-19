@@ -39,6 +39,12 @@ Route::get('/product-edit/{id}', [App\Http\Controllers\Admin\ProductController::
 Route::post('/product-update/{id}', [App\Http\Controllers\Admin\ProductController::class, 'updateProduct'])->name('updateProduct');
 Route::get('/product-delete/{id}', [App\Http\Controllers\Admin\ProductController::class, 'deleteProduct'])->name('deleteProduct');
 
+//Admin Coupon
+Route::any('/coupons', [App\Http\Controllers\Admin\CouponController::class, 'createCoupon'])->name('createCoupon');
+Route::get('/coupon-show',[App\Http\Controllers\Admin\CouponController::class, 'showCoupon'])->name('showCoupon');
+Route::any('/coupon-edit/{coupon_id}',[App\Http\Controllers\Admin\CouponController::class, 'editCoupon'])->name('editCoupon');
+Route::get('/coupon-delete/{id}', [App\Http\Controllers\Admin\CouponController::class, 'deleteCoupon'])->name('deleteCoupon');
+
 //User Pannel
 Route::get('/product-lists/{id}', [App\Http\Controllers\BaseController::class, 'listProduct'])->name('listProduct');
 
