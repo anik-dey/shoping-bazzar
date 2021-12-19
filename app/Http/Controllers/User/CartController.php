@@ -11,7 +11,10 @@ class CartController extends Controller
     {
         $cartItems = \Cart::getContent();
         // dd($cartItems);
-        return view('users.cart', compact('cartItems'));
+        $tax=\Cart::getTotal()*5/100;
+        $grand_total=round(\Cart::getTotal()+$tax);
+
+        return view('users.cart', compact('cartItems','tax','grand_total'));
     }
     public function addToCart($id)
     {
