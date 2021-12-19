@@ -55,3 +55,6 @@ Route::get('/product-lists/cart-store/{id}', [App\Http\Controllers\User\CartCont
 Route::get('update-cart/{quantity}/{id}/{fun}', [App\Http\Controllers\User\CartController::class, 'updateCart'])->name('cart.update');
 Route::get('remove/{id}', [App\Http\Controllers\User\CartController::class, 'removeCart'])->name('cart.remove');
 Route::get('clear', [App\Http\Controllers\User\CartController::class, 'clearAllCart'])->name('cart.clear');
+
+//Coupon
+Route::post('/coupon', [App\Http\Controllers\User\CouponController::class, 'userCoupon'])->name('userCoupon');
