@@ -519,6 +519,7 @@
     </div>
 </body>
 
+
 <!-- belle/cart-variant1.html   11 Nov 2019 12:44:32 GMT -->
 {{-- <script type="text/javascript">
     // $(".update-cart").change(function(e) {

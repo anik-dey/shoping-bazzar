@@ -58,3 +58,6 @@ Route::get('clear', [App\Http\Controllers\User\CartController::class, 'clearAllC
 
 //Coupon
 Route::post('cart', [App\Http\Controllers\User\CouponController::class, 'userCoupon'])->name('userCoupon');
+
+//Porduct Details
+Route::get('/product-details/{id}', [App\Http\Controllers\BaseController::class, 'detailProduct'])->name('detailsProduct');

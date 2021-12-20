@@ -18,4 +18,10 @@ class BaseController extends Controller
         $products= Product::where('category_id', $id)->where('product_status','Active')->get();
         return view('users.products_list', compact('products'));
     }
+
+    public function detailProduct($id)
+    {
+        $product=Product::where('product_id',$id)->first();
+        return view('users.product_details',compact('product'));
+    }
 }
