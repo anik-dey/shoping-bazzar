@@ -57,4 +57,4 @@ Route::get('remove/{id}', [App\Http\Controllers\User\CartController::class, 'rem
 Route::get('clear', [App\Http\Controllers\User\CartController::class, 'clearAllCart'])->name('cart.clear');
 
 //Coupon
-Route::post('/coupon', [App\Http\Controllers\User\CouponController::class, 'userCoupon'])->name('userCoupon');
+Route::post('cart', [App\Http\Controllers\User\CouponController::class, 'userCoupon'])->name('userCoupon');

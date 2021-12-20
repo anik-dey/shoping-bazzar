@@ -159,8 +159,8 @@
                                                     </div>
                                                     <!-- product price -->
                                                     <div class="product-price">
-                                                        <span class="old-price">$500.00</span>
-                                                        <span class="price">{{ $item->product_price }}</span>
+                                                        <span class="old-price">৳ 500.00</span>
+                                                        <span class="price">৳ {{ $item->product_price }}</span>
                                                     </div>
                                                     <!-- End product price -->
 

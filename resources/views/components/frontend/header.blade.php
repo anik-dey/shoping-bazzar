@@ -428,8 +428,8 @@
                                             </div>
                                             <div class="priceRow">
                                                 <div class="product-price">
-                                                    <span
-                                                        class="money">{{ $item->price * $item->quantity }}</span>
+                                                    <span class="money">৳
+                                                        {{ $item->price * $item->quantity }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -440,7 +440,7 @@
                         <div class="total">
                             <div class="total-in">
                                 <span class="label">Cart Subtotal:</span><span class="product-price"><span
-                                        class="money">{{ Cart::getTotal() }}</span></span>
+                                        class="money">৳ {{ Cart::getTotal() }}</span></span>
                             </div>
                             <div class="buttonSet text-center">
                                 <a href="{{ route('cart.list') }}" class="btn btn-secondary btn--small">View
