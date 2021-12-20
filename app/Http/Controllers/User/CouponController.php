@@ -13,9 +13,10 @@ class CouponController extends Controller
 {
     public function userCoupon(Request $request)
     {
-
+        $currentDate = date('Y-m-d');
+        $currentDate = date('Y-m-d', strtotime($currentDate));
         $coupon_code=$request->coupon_code;
-        $coupon=Coupon::where('code',$coupon_code)->where('cart_value','<=',\Cart::getTotal())->first();
+        $coupon=Coupon::where('code',$coupon_code)->whereDate('expiry_date','>=',$currentDate)->where('cart_value','<=',\Cart::getTotal())->first();
         if(!$coupon)
         {
             session()->flash('message','Coupon code is invalid');
