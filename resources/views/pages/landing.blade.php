@@ -91,7 +91,7 @@
 
                                                 <div class="product-image">
                                                     <!-- start product image -->
-                                                    <a href="#">
+                                                    <a href="{{ URL::to('/product-details/' . $item->product_id) }}">
                                                         <!-- image -->
                                                         <img class="primary blur-up lazyload"
                                                             data-src="{{ asset('products/' . $item->product_image) }}"
